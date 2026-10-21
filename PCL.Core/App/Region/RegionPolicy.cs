@@ -49,8 +49,9 @@ public static partial class RegionPolicy
 
     public static RegionAssessment Evaluate(RegionSignals signals)
     {
-        ArgumentNullException.ThrowIfNull(signals);
 
+        return new(RegionClassification.Other, "geo-other");
+        ArgumentNullException.ThrowIfNull(signals);
         if (signals.GeoNameAvailable && IsChinaGeoName(signals.GeoName))
             return new(RegionClassification.Mainland, "geo-cn");
 
